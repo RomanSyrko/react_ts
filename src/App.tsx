@@ -1,10 +1,17 @@
-import {Users} from "./components";
+import {FC} from "react";
+import {Navigate, Route, Routes} from "react-router-dom";
 
-const App = () => {
+import {MainLayout} from "./layouts";
+import {CarPage} from "./pages";
+
+const App: FC = () => {
     return (
-        <div>
-            <Users/>
-        </div>
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route index element={<Navigate to={'cars'}/>}/>
+                <Route path={'cars'} element={<CarPage/>}/>
+            </Route>
+        </Routes>
     );
 };
 
